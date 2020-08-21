@@ -1,0 +1,42 @@
+{
+  "name": "subapp1",
+  "private": true,
+  "scripts": {
+    "start": "PORT=8100 umi dev",
+    "build": "umi build",
+    "postinstall": "umi generate tmp",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage",
+    "uw": "umi webpack --rule=ts-in-node_modules"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^5.0.12",
+    "@grfe/micro-store": "0.0.1-beta2",
+    "@types/styled-components": "^5.1.2",
+    "@umijs/preset-react": "1.x",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^5.1.1",
+    "umi": "^3.2.14"
+  },
+  "devDependencies": {
+    "@umijs/plugin-qiankun": "^2.7.0",
+    "@umijs/test": "^3.2.14",
+    "get-symlinks": "^3.0.1",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
+    "yorkie": "^2.0.0"
+  }
+}
