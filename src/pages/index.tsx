@@ -13,22 +13,22 @@ const Home = props => {
     const ss = new MicroStorage({ state, name: 'subapp1' });
 
     ss.watch('subapp1Data', (v, v2) => {
-      console.log(
-        '%celelee test:',
-        'background:#000;color:#1ff',
-        '变化',
-        v,
-        v2,
-      );
+      // console.log(
+      //   '%celelee test:',
+      //   'background:#000;color:#1ff',
+      //   '变化',
+      //   v,
+      //   v2,
+      // );
     });
     ss.watch('subapp1/obj/a', (v, v2) => {
-      console.log(
-        '%celelee test:',
-        'background:#000;color:#11f',
-        '变化',
-        v,
-        v2,
-      );
+      // console.log(
+      //   '%celelee test:',
+      //   'background:#000;color:#11f',
+      //   '变化',
+      //   v,
+      //   v2,
+      // );
     });
     // ss.set('subapp1/obj/a', 22);
     // ss.watch('subapp1', 'subapp1Data', (v, v2) => {

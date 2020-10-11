@@ -5,33 +5,23 @@ const routes: RoutesOptions[] = [
     title: '子应用Aitem1',
     // entry_dev: '//localhost:8100',
     path: '/',
-    icon: CarOutlined,
+    icon: 'CarOutlined',
     children: [
       {
         title: '子菜单1',
-        icon: CarOutlined,
+        icon: 'CarOutlined',
         path: '/sub-item',
+        // path: '/sub-item',
       },
       {
         title: '子菜单2',
-        icon: CarOutlined,
+        icon: 'CarOutlined',
+        // path: '/sub-item2',
         path: '/sub-item2',
       },
-    ],
-  },
-  {
-    title: '子应用Aitem2',
-    icon: CarOutlined,
-    children: [
       {
-        title: '子菜单1',
-        icon: CarOutlined,
-        path: '/sub-item',
-      },
-      {
-        title: '子菜单2',
-        icon: CarOutlined,
-        path: '/sub-item2',
+        title: 'aaa',
+        path: '/aaaa',
       },
     ],
   },

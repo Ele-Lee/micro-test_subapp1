@@ -2,9 +2,13 @@ import { defineConfig } from 'umi';
 // @ts-ignore
 import getSymlinks from 'get-symlinks';
 import * as fs from 'fs';
+import pkg from './package.json';
+import { routes as routesConfig } from './config';
 
 export default defineConfig({
-  layout: false,
+  base: '/' + pkg.name,
+  publicPath: '/' + pkg.name + '/',
+  // layout: {},
   dva: {},
   qiankun: {
     slave: {},
@@ -12,6 +16,12 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  mlayout: {
+    subname: 'subapp1',
+    menuConfig: routesConfig,
+  },
+  plugins: ['../../../micro-layout/lib'],
+  // plugins: ['@grfe/micro-layout'],
   // routes: [{ path: '/', component: '@/pages/index' }],
   chainWebpack: (config, { webpack }) => {
     let symlinks = getSymlinks.sync(['./node_modules/**'], {
@@ -25,6 +35,8 @@ export default defineConfig({
   },
   externals: {
     '@grfe/micro-store': '@grfe/micro-store',
+    'micro-layout': 'micro-layout',
+    '../../../micro-layout/lib': '../../../micro-layout/lib',
   },
   headScripts: [
     {

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styled, { css, StyledComponent } from 'styled-components';
 import { Menu, Layout } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
 import { MenuClickEventHandler } from 'rc-menu/lib/interface';
+import { Link } from 'umi';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -19,7 +20,6 @@ interface LayoutMenuProps {
   onMenuClick: MenuClickEventHandler;
   HeaderHeight: number;
 }
-
 const localKey = '__menu_collapsed__';
 
 const LayoutMenu: React.FC<LayoutMenuProps> = ({
@@ -39,6 +39,24 @@ const LayoutMenu: React.FC<LayoutMenuProps> = ({
   }, [collapsed]);
   const onCollapse = () => setCollapsed(!+collapsed);
 
+  // function renderItemByItem(routesArr) {
+  //   return routesArr.map(({ name, title, icon, path, children }) => {
+  //     const menuProps = {
+  //       key: name || path || title,
+  //       icon: icon ? React.createElement(icon) : undefined,
+  //       title: title,
+  //     };
+  //     if (Array.isArray(children)) {
+  //       return <SubMenu {...menuProps}>{renderItemByItem(children)}</SubMenu>;
+  //     }
+  //     return (
+  //       <LayoutMenuItem {...menuProps}>
+  //         {title}
+  //         {!!path && <Link to={path}></Link>}
+  //       </LayoutMenuItem>
+  //     );
+  //   });
+  // }
   return (
     <ResetSider width={160} {...{ collapsed, onCollapse }} collapsible>
       {logo && (
@@ -56,6 +74,7 @@ const LayoutMenu: React.FC<LayoutMenuProps> = ({
         selectedKeys={[selectedKey]}
         onClick={onMenuClick}
         defaultOpenKeys={activeSubMenu ? [activeSubMenu] : undefined}
+        // defaultOpenKeys={activeSubMenu ? [activeSubMenu] : undefined}
       >
         {menuItemList(LayoutMenuItem, SubMenu)}
       </ResetMenu>
